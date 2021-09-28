@@ -1,12 +1,12 @@
 -- 1. Selezionare tutti gli studenti nati nel 1990 (160)
 SELECT * 
 FROM `students` 
-WHERE YEAR(`date_of_birth`) = "1990"
+WHERE YEAR(`date_of_birth`) = 1990
 
 -- 2. Selezionare tutti i corsi che valgono più di 10 crediti (479)
 SELECT * 
 FROM `courses` 
-WHERE `cfu` > "10"
+WHERE `cfu` > 10
 
 -- 3. Selezionare tutti gli studenti che hanno più di 30 anni
 SELECT * 
@@ -47,7 +47,22 @@ GROUP BY  YEAR(`enrolment_date`)
 
 -- 2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
 
+SELECT COUNT(*) AS "insegnante", `office_address` AS "indirizzo"
+FROM `teachers`
+GROUP BY `indirizzo`
+
 -- 3. Calcolare la media dei voti di ogni appello d'esame
+SELECT ROUND(AVG(`vote`), 2) AS "media", `exam_id` AS "sessione"
+FROM `exam_student`
+GROUP BY `sessione`
 
 -- 4. Contare quanti corsi di laurea ci sono per ogni dipartimento
+
+SELECT COUNT(*) AS `total_courses`, `department_id`
+FROM `degrees`
+GROUP BY `department_id`;
+
+
+
+
 
